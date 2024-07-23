@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class=" bg-zinc-700 w-screen min-h-[300vh] p-10  flex-wrap">
+        <div class="form w-full">
+        <form action="/create" method="post">
+            <input  class="px-5 outline-none w-full py-2 mt-2 text-[2vw] rounded-xl " type="text" name="title" placeholder="Enter your task here">
+            <textarea class="px-5 h-[18vh] justify-center outline-none resize-none w-full pt-10 mt-2 text-[2vw] rounded-xl " name="details" id="" placeholder="write your description here"></textarea>
+            <button class="px-5 text-[2vw] text-[white] py-2 rounded-xl bg-[skyblue] mt-5">Create</button>
+        </form>
+        </div>
+        <div class="cards flex gap-10  flex-wrap-wrap">
+        <% if (files.length > 0) { %>
+            <% files.forEach(function(val) { %>
+                <div class="justify-center w-72 bg-[wheat] items-center rounded-xl h-[30vh] mt-10 p-5">
+                   <h1 class="text-center text-[2vw] mb-[5vw]  text-[red]"><%= val %></h1 >
+                    <div class="flex justify-between">
+                    <a class="ml-[2vh] mr-[2vh]  items center  text-[1vw] bg-[purple] text-[white] border-[2px] border-bg-zinc rounded-lg px-5 py-2" href="/Files/<%= val %>">Read More</a>
+                    <a class="ml-[2vh] mr-[2vh]  items center  text-[1vw] bg-[purple] text-[white] border-[2px] border-bg-zinc rounded-lg px-5 py-2" href="/edit/<%= val %>">Edit</a>
+                </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <h3 class="mt-10 text-center text-[2vh] text-[white]">No tasks yet</h3>
+        <% } %>
+        </div>
+    </div>
+</body>
+</html>
